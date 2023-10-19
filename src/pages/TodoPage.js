@@ -25,12 +25,21 @@ function TodoPage() {
     setTodos(todos.filter((todo) => todo._id !== id));
   };
 
+  const taskDeleteButton = async (id) => {
+    await axios.delete(`http://localhost:3001/todos/${id}`);
+    setTodos(todos.filter((todo) => todo._id !== id));
+  };
+
   return (
     <div>
       <h1>Todo Page</h1>
       <input value={title} onChange={(e) => setTitle(e.target.value)} />
       <button onClick={addTodo}>Add Todo</button>
-      <TodoList todos={todos} onComplete={completeTodo} />
+      <TodoList
+        todos={todos}
+        onComplete={completeTodo}
+        onDelete={taskDeleteButton}
+      />
       <Link to="/review">
         <h3>Reviewページを見る</h3>
       </Link>
