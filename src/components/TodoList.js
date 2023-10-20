@@ -1,16 +1,28 @@
 import React from "react";
+import "./TodoList.css";
 
 function TodoList({ todos, onComplete, onDelete }) {
   return (
-    <ul>
-      {todos.map((todo) => (
-        <li key={todo._id}>
-          {todo.title}
-          <button onClick={() => onComplete(todo._id)}>Complete</button>
-          <button onClick={() => onDelete(todo._id)}>Delete</button>
-        </li>
-      ))}
-    </ul>
+    <div className="todoList">
+      <ul className="todoListWrapper">
+        {todos.map((todo) => (
+          <li className="todoListTitle" key={todo._id}>
+            <input
+              className="todoCheckBox"
+              type="checkbox"
+              onClick={() => onComplete(todo._id)}
+            />
+            {todo.title}
+            <button
+              className="todoDeleteButton"
+              onClick={() => onDelete(todo._id)}
+            >
+              <i className="fa-solid fa-trash-can"></i>
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 

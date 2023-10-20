@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ReviewList from "../components/ReviewList";
-import { Link } from "react-router-dom";
+import Topbar from "../components/topbar/Topbar";
+import "./ReviewPage.css";
 
 function ReviewPage() {
   const [reviews, setReviews] = useState([]);
@@ -25,17 +26,25 @@ function ReviewPage() {
   };
 
   return (
-    <div>
-      <h1>Review Page</h1>
-      <ReviewList
-        reviews={reviews}
-        onComplete={completeTodo}
-        onDelete={todoDeleteButton}
-      />
-      <Link to="/">
-        <h3>Todoページに戻る</h3>
-      </Link>
-    </div>
+    <>
+      <div className="topbar">
+        <Topbar titleCenter="REVIEW" titleRight="Todo Page" linkRight="/" />
+      </div>
+      <div className="reviewPage">
+        <div className="leftbar">
+          <ReviewList
+            reviews={reviews}
+            onComplete={completeTodo}
+            onDelete={todoDeleteButton}
+          />
+        </div>
+        <div className="mainArea">
+          <span className="mainAreaInput">
+            ここにGPTAPIなどを用いて復習ページを作成する。
+          </span>
+        </div>
+      </div>
+    </>
   );
 }
 

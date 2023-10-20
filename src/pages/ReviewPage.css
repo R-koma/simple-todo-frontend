@@ -1,0 +1,27 @@
+.reviewPage {
+  display: flex;
+}
+
+.leftbar {
+  flex: 2;
+  display: flex;
+  justify-content: start;
+}
+
+.mainArea {
+  flex: 10;
+  display: flex;
+  justify-content: flex-start;
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  background-color: rgb(44, 41, 41);
+}
+
+.mainAreaInput {
+  display: flex;
+  align-items: flex-start;
+  margin: 20px 0 0 20px;
+  font-size: 30px;
+  color: white;
+}
