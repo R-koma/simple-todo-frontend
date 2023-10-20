@@ -6,7 +6,8 @@ import "./ReviewPage.css";
 
 function ReviewPage() {
   const [reviews, setReviews] = useState([]);
-
+  const [selectedReview, setSelectedReview] = useState(null);
+  // console.log(reviews[0].title);
   useEffect(() => {
     async function fetchReviews() {
       const response = await axios.get("http://localhost:3001/reviews");
@@ -34,14 +35,27 @@ function ReviewPage() {
         <div className="leftbar">
           <ReviewList
             reviews={reviews}
+            setSelectedReview={setSelectedReview}
             onComplete={completeTodo}
             onDelete={todoDeleteButton}
           />
         </div>
         <div className="mainArea">
-          <span className="mainAreaInput">
-            ここにGPTAPIなどを用いて復習ページを作成する。
-          </span>
+          {/* <MainReviewPage
+            reviews={reviews}
+            setSelectedReview={setSelectedReview}
+          /> */}
+          <div className="mainAreaInputTitle">
+            {selectedReview ? selectedReview.title : ""}
+          </div>
+          <div className="inputAreaContainer">
+            <input
+              className="mainAreaInput"
+              type="text"
+              placeholder="キーワードを入力"
+            />
+            <button className="mainAreaButton">復習</button>
+          </div>
         </div>
       </div>
     </>

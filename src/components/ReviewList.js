@@ -1,12 +1,16 @@
 import React from "react";
 import "./ReviewList.css";
 
-function ReviewList({ reviews, onComplete, onDelete }) {
+function ReviewList({ reviews, onComplete, onDelete, setSelectedReview }) {
   return (
     <div className="reviewList">
       <ul className="reviewListWrapper">
         {reviews.map((review) => (
-          <li className="reviewListTitle" key={review._id}>
+          <li
+            className="reviewListTitle"
+            key={review._id}
+            onClick={() => setSelectedReview(review)}
+          >
             <input
               className="reviewCheckBox"
               type="checkbox"
@@ -20,6 +24,9 @@ function ReviewList({ reviews, onComplete, onDelete }) {
               <i className="fa-solid fa-trash-can"></i>
             </button>
           </li>
+          // <button key={review._id} onClick={() => setSelectedReview(review)}>
+          //   {review.title}
+          // </button>
         ))}
       </ul>
     </div>
